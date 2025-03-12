@@ -47,6 +47,9 @@ import re
 
 # ====================== 配置区域 Configuration ======================
 
+# Set the directory for output markdowns. 设置markdown输出路径
+MKD_OUTPUT = os.getenv("MKD_OUTPUT", "./share")
+
 # Set the API provider. 选择使用的 API 提供商（chatgpt、deepseek、siliconflow）
 API_PROVIDER = os.getenv("API_PROVIDER", "siliconflow").lower()
 
@@ -61,11 +64,13 @@ if API_PROVIDER == "chatgpt":
 # Define keywords for relevance filtering.
 # 定义用于筛选论文相关性的关键词（请根据你的兴趣修改）。
 KEYWORDS = """
-Strong coulping in QCD;
+Strong coulping constant in QCD;
 Gluon in QCD;
 Particle flow alorigthm in future collider;
 Non-perturbative QCD;
 BESIII experiment;
+Belle experiment;
+electron positron collider;
 """  # 请修改为你感兴趣的关键词
 
 # ====================== API 调用函数区域 ======================
@@ -367,13 +372,13 @@ def main():
     """
 
     today = datetime.datetime.now()
-    start_date = (today - datetime.timedelta(days=3)).strftime("%Y%m%d")
+    start_date = (today - datetime.timedelta(days=2)).strftime("%Y%m%d")
     end_date = today.strftime("%Y%m%d")
 
     # Define the arXiv API query URL to fetch hep-ex and hep-ph papers.
     # 定义用于获取 hep-ex 和 hep-ph 论文的 arXiv API 查询 URL。
     arxiv_api_url = (
-        "http://export.arxiv.org/api/query?search_query=cat:hep-ex+OR+cat:hep-ph+AND"
+        "http://export.arxiv.org/api/query?search_query=(cat:hep-ex+OR+cat:hep-ph)+AND"
         f"+submittedDate:%5B{start_date}%20TO%20{end_date}%5D"
         "&start=0&max_results=50&sortBy=submittedDate&sortOrder=descending"
     )
@@ -393,8 +398,8 @@ def main():
             paper.updated, "%Y-%m-%dT%H:%M:%SZ")
 
         title = paper.title.replace('\n', ' ')
-        # Replace newline characters in title and abstract for clean formatting.
-        # 替换题目和摘要中的换行符以保证格式整洁。
+        # Replace newline characters in abstract for clean formatting.
+        # 替换摘要中的换行符以保证格式整洁。
         abstract = paper.summary.replace('\n', ' ')
         print(f"Evaluating paper No. {index}/{len(papers)}: {title}")
         print(f"正在评估第 {index}/{len(papers)} 篇论文：{title}")
@@ -413,14 +418,11 @@ def main():
         # 暂停1秒以避免 API 调用频率过快的问题。
         time.sleep(1)
 
-    # Print log infomation in case of interruption to prevent LLM output loss.   
-    # 打印日志信息，以防中断导致 LLM 输出丢失。
+    # Sort the papers according to the relevance score.
+    # 根据相关性分数对论文进行排序。
     print(papers_info)
     with open('papers_info.json', 'w') as f:
         json.dump(papers_info, f, indent=4)
-
-    # Sort the papers according to the relevance score.
-    # 根据相关性分数对论文进行排序。
     if ((papers_info) != 0):
         sorted_list = sorted(
             papers_info, key=lambda x: str_to_float(x['score']), reverse=True)
@@ -430,7 +432,7 @@ def main():
     # Create a markdown file named with the current date.
     # 根据当前日期创建 markdown 文件。
     date_str = datetime.date.today().strftime("%Y-%m-%d")
-    report_filename = f"dailyRepo_{date_str}.md"
+    report_filename = f"{MKD_OUTPUT}/dailyRepo_{date_str}.md"
     generate_markdown_report(sorted_list, report_filename)
     print(f"Report generated: {report_filename}")
     print(f"报告已生成：{report_filename}")

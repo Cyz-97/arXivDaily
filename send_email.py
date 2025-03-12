@@ -14,6 +14,6 @@ def send_email_via_mail_command(subject, body, to_email, attachment=None):
 send_email_via_mail_command(
     subject="Test Email with Attachment",
     body="Please find the attached file.",
-    to_email="destination@mail.com",
+    to_email="cyz.pers@outlook.com",
     attachment="./dailyRepo_2025-02-23.md"
 )
