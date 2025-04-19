@@ -1,0 +1,111 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\providecommand{\doi}[1]{https://doi.org/#1}
+
+\bibitem{child2019generating}
+Child, R., Gray, S., Radford, A., Sutskever, I.: Generating long sequences with
+  sparse transformers. arXiv preprint arXiv:1904.10509  (2019)
+
+\bibitem{deng2009imagenet}
+Deng, J., Dong, W., Socher, R., Li, L.J., Li, K., Fei-Fei, L.: Imagenet: A
+  large-scale hierarchical image database. In: 2009 IEEE conference on computer
+  vision and pattern recognition. pp. 248--255. Ieee (2009)
+
+\bibitem{devlin2018bert}
+Devlin, J., Chang, M.W., Lee, K., Toutanova, K.: Bert: Pre-training of deep
+  bidirectional transformers for language understanding. arXiv preprint
+  arXiv:1810.04805  (2018)
+
+\bibitem{dosovitskiy2020image}
+Dosovitskiy, A., Beyer, L., Kolesnikov, A., Weissenborn, D., Zhai, X.,
+  Unterthiner, T., Dehghani, M., Minderer, M., Heigold, G., Gelly, S., et~al.:
+  An image is worth 16x16 words: Transformers for image recognition at scale.
+  In: ICLR (2021)
+
+\bibitem{fu2020domain}
+Fu, S., Lu, Y., Wang, Y., Zhou, Y., Shen, W., Fishman, E., Yuille, A.: Domain
+  adaptive relational reasoning for 3d multi-organ segmentation. In:
+  International Conference on Medical Image Computing and Computer-Assisted
+  Intervention. pp. 656--666. Springer (2020)
+
+\bibitem{he2016deep}
+He, K., Zhang, X., Ren, S., Sun, J.: Deep residual learning for image
+  recognition. In: Proceedings of the IEEE conference on computer vision and
+  pattern recognition. pp. 770--778 (2016)
+
+\bibitem{li2018h}
+Li, X., Chen, H., Qi, X., Dou, Q., Fu, C.W., Heng, P.A.: H-denseunet: hybrid
+  densely connected unet for liver and tumor segmentation from ct volumes. IEEE
+  transactions on medical imaging  \textbf{37}(12),  2663--2674 (2018)
+
+\bibitem{long2015fully}
+Long, J., Shelhamer, E., Darrell, T.: Fully convolutional networks for semantic
+  segmentation. In: Proceedings of the IEEE conference on computer vision and
+  pattern recognition. pp. 3431--3440 (2015)
+
+\bibitem{milletari2016v}
+Milletari, F., Navab, N., Ahmadi, S.A.: V-net: Fully convolutional neural
+  networks for volumetric medical image segmentation. In: 3DV (2016)
+
+\bibitem{oktay2018attention}
+Oktay, O., Schlemper, J., Folgoc, L.L., Lee, M., Heinrich, M., Misawa, K.,
+  Mori, K., McDonagh, S., Hammerla, N.Y., Kainz, B., et~al.: Attention u-net:
+  Learning where to look for the pancreas. MIDL  (2018)
+
+\bibitem{parmar2018image}
+Parmar, N., Vaswani, A., Uszkoreit, J., Kaiser, L., Shazeer, N., Ku, A., Tran,
+  D.: Image transformer. In: International Conference on Machine Learning. pp.
+  4055--4064. PMLR (2018)
+
+\bibitem{ronneberger2015u}
+Ronneberger, O., Fischer, P., Brox, T.: U-net: Convolutional networks for
+  biomedical image segmentation. In: International Conference on Medical image
+  computing and computer-assisted intervention. pp. 234--241. Springer (2015)
+
+\bibitem{schlemper2019attention}
+Schlemper, J., Oktay, O., Schaap, M., Heinrich, M., Kainz, B., Glocker, B.,
+  Rueckert, D.: Attention gated networks: Learning to leverage salient regions
+  in medical images. Medical image analysis  \textbf{53},  197--207 (2019)
+
+\bibitem{vaswani2017attention}
+Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A.N.,
+  Kaiser, {\L}., Polosukhin, I.: Attention is all you need. In: Advances in
+  neural information processing systems. pp. 5998--6008 (2017)
+
+\bibitem{wang2018non}
+Wang, X., Girshick, R., Gupta, A., He, K.: Non-local neural networks. In:
+  Proceedings of the IEEE conference on computer vision and pattern
+  recognition. pp. 7794--7803 (2018)
+
+\bibitem{yu2017automatic}
+Yu, L., Cheng, J.Z., Dou, Q., Yang, X., Chen, H., Qin, J., Heng, P.A.:
+  Automatic 3d cardiovascular mr segmentation with densely-connected volumetric
+  convnets. In: International Conference on Medical Image Computing and
+  Computer-Assisted Intervention. pp. 287--295. Springer (2017)
+
+\bibitem{yu2018recurrent}
+Yu, Q., Xie, L., Wang, Y., Zhou, Y., Fishman, E.K., Yuille, A.L.: Recurrent
+  saliency transformation network: Incorporating multi-stage visual cues for
+  small organ segmentation. In: Proceedings of the IEEE conference on computer
+  vision and pattern recognition. pp. 8280--8289 (2018)
+
+\bibitem{zheng2020rethinking}
+Zheng, S., Lu, J., Zhao, H., Zhu, X., Luo, Z., Wang, Y., Fu, Y., Feng, J.,
+  Xiang, T., Torr, P.H., et~al.: Rethinking semantic segmentation from a
+  sequence-to-sequence perspective with transformers. arXiv preprint
+  arXiv:2012.15840  (2020)
+
+\bibitem{zhou2017fixed}
+Zhou, Y., Xie, L., Shen, W., Wang, Y., Fishman, E.K., Yuille, A.L.: A
+  fixed-point model for pancreas segmentation in abdominal ct scans. In:
+  International conference on medical image computing and computer-assisted
+  intervention. pp. 693--701. Springer (2017)
+
+\bibitem{zhou2018unet++}
+Zhou, Z., Siddiquee, M.M.R., Tajbakhsh, N., Liang, J.: Unet++: A nested u-net
+  architecture for medical image segmentation. In: Deep Learning in Medical
+  Image Analysis and Multimodal Learning for Clinical Decision Support, pp.
+  3--11. Springer (2018)
+
+\end{thebibliography}

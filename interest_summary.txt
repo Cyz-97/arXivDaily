@@ -1,15 +1,87 @@
-I am a high-energy physicist working at the intersection of precision QCD, dark-sector phenomenology, and detector R&D. My research focuses on:
+## 一、研究者背景概述
 
-Physics Goals
-Precision QCD: Extracting αₛ and heavy-quark masses at permil-level precision using hadronic τ decays and e⁺e⁻→hadrons (spectral moments, FOPT/CIPT, dispersive form factors).
+- **研究方向主轴**：以实验角度检验和挑战量子色动力学（QCD），聚焦非微扰区的现象与理论解释。
+- **实验平台优势**：长期参与BESIII实验，熟悉Monte Carlo模拟、谱函数分析、机器学习方法等技术手段。
+- **研究风格**：强调理论与实验间的有效沟通，倡导从现象学角度重构实验数据与理论预测的接口。
 
-Dark-Sector Searches: Probing light vectors (e.g., dark photons) in π⁰/J/ψ decays and disentangling signals from QCD backgrounds.
+---
 
-Fundamental Tests: Leveraging τ pairs at Belle II/FCC-ee for CP violation, quantum entanglement, and Bell inequality tests.
+## 二、研究兴趣演化路径
 
-Experimental Tools
-Detector Development: Optimizing ultra-fast timing (≲30 ps), granular calorimetry (HGCAL-style), and tracking for π⁰ ID, shower separation, and τ tagging.
+### 1. **阶段一：αₛ的高精度测量与QCD验证**（~2023-2024初）
+- 使用τ→hadrons衰变中的V/A谱函数提取αₛ。
+- 分析OPE展开有效性及非微扰修正项影响。
+- 对ALEPH、OPAL和BESIII测量的对比分析。
+- 使用RGE（重整化群方程）连接不同能标下的αₛ值。
 
-Software & Algorithms: Integrating particle-flow, ML-driven reconstruction (GNNs/BDTs), and simulation tools (Geant4, TAUOLA, unfolding methods) for next-generation e⁺e⁻ colliders.
+#### **关键成果预期**：
+- 推出BESIII版本的αₛ测量，并与MS̄结果对接。
+- 建立用于αₛ测量的谱函数构造与误差传播流程。
 
-I bridge theory-driven targets (e.g., αₛ to 0.2%, dark-photon limits below ε²∼10⁻⁷) with detector and analysis pipelines. My work aims to advance both the physics reach and technical foundations of future high-energy experiments (Belle II, τ-charm factories, FCC-ee).
+---
+
+### 2. **阶段二：模拟层面的精准控制与分类器优化**（2024中）
+- 结合KKMC、TAUOLA等模拟器提升生成器精度。
+- 应用图神经网络（GNN）识别复杂衰变拓扑（如π⁰重建）。
+- 使用Ranger等优化器提升小样本类别识别能力。
+- 开发基于混淆矩阵的诊断工具用于监控模型表现演化。
+
+#### **关键成果预期**：
+- GNN在τ衰变分类中的实用方案（带训练细节与系统误差）。
+- 公布用于实验分析的开源分析框架或模块。
+
+---
+
+### 3. **阶段三：强子结构探索与新测量路径设计**（2024末）
+- 探讨π⁰的Dalitz衰变与空间样态过渡形式因子（TFF）。
+- 评估BESIII 100亿J/ψ数据用于空间样态TFF测量的可行性。
+- 对比Dalitz通道与γγ通道在系统误差与理论模型中的差异。
+- 更新π⁰ → γe⁺e⁻在PDG中的实验结果依据。
+
+#### **关键成果预期**：
+- 提出空间样态TFF测量的新实验方案；
+- 建立Dalitz过程的系统误差分析框架。
+
+---
+
+### 4. **阶段四：非微扰QCD的结构挑战与验证框架**（2025春-未来）
+- 批判性分析QCD是否能完整描述低能强相互作用；
+- 推动“有效荷”概念在实验测量中的标准化应用；
+- 探索胶球、强子谱、QCD真空结构等未决问题的实验可探性；
+- 提出通过BESIII直接验证或挑战QCD关键假设的策略。
+
+#### **关键成果预期**：
+- 发表关于“实验验证QCD局限性”的观点综述或方法论文；
+- 组织专题讨论会或工作组，倡导跨实验和理论的有效沟通；
+- 探索结合AdS/QCD等替代理论的实验区分策略。
+
+---
+
+## 三、未来三年科研任务排布（2025-2027）
+
+| 时间 | 主题 | 工作重点 | 预期产出 |
+|------|------|----------|-----------|
+| 2025 上 | QCD有效荷实验定义 | 方案设计、引入MS̄转换因子 | 方法论文/会议报告 |
+| 2025 下 | π⁰ TFF空间样态测量 | Dalitz通道系统误差建模 | 投稿PRD或EPJC |
+| 2026 上 | BESIII胶球搜索分析 | 设计事件拓扑识别算法 | 初步结果或短文汇报 |
+| 2026 下 | 数据驱动理论拟合 | 将ML方法用于理论-数据回归 | 交叉学科论文（HEP+AI） |
+| 2027 年 | QCD实验基础假设验证 | 整体回顾与挑战点提出 | 高水平综述/观点文章 |
+
+---
+
+## 四、资源协调与合作建议
+
+- **实验协作**：继续深度参与BESIII，并积极联系LHCb、Belle II等具备强子结构探测潜力的实验。
+- **理论合作**：建议与AdS/QCD、Lattice QCD、非微扰解析模型（如light-front holography）研究者进行合作对接。
+- **工具开发**：结合ROOT、ONNX、PyTorch等技术开发面向HEP数据的ML模块。
+
+---
+
+## 五、长期目标展望
+
+- 推动建立“以实验数据驱动的强子结构和非微扰QCD理解框架”；
+- 提出一套实验上可实施的“QCD有效性边界测试流程”；
+- 在BESIII或未来STCF项目中引领针对QCD基础问题的测量项目；
+- 建立交叉研究组，连接理论-实验-计算之间的壁垒。
+
+
