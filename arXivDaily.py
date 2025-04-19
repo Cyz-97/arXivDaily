@@ -47,9 +47,6 @@ import re
 
 # ====================== 配置区域 Configuration ======================
 
-# Set the directory for output markdowns. 设置markdown输出路径
-MKD_OUTPUT = os.getenv("MKD_OUTPUT", "./share")
-
 # Set the API provider. 选择使用的 API 提供商（chatgpt、deepseek、siliconflow）
 API_PROVIDER = os.getenv("API_PROVIDER", "siliconflow").lower()
 
@@ -63,15 +60,7 @@ if API_PROVIDER == "chatgpt":
 
 # Define keywords for relevance filtering.
 # 定义用于筛选论文相关性的关键词（请根据你的兴趣修改）。
-KEYWORDS = """
-Strong coulping constant in QCD;
-Gluon in QCD;
-Particle flow alorigthm in future collider;
-Non-perturbative QCD;
-BESIII experiment;
-Belle experiment;
-electron positron collider;
-"""  # 请修改为你感兴趣的关键词
+KEYWORDS = open('interest_summary.txt', 'r', encoding='utf-8').read()  # 请修改为你感兴趣的关键词
 
 # ====================== API 调用函数区域 ======================
 
@@ -199,24 +188,27 @@ def evaluate_paper_relevance_siliconflow(title, abstract, keywords, repeated=Fal
     """
     prompt = f"""
 You are an expert high energy physicist, your are good at academic paper reading and understanding.
-Below is the title and abstract of a paper:
+Below is the title and abstract of a paper published in arXiv today:
 Title: {title}
 Abstract: {abstract}
 
-Given the keywords: "{keywords}", please analyze the paper and determine how strong it is relevant to any of these keywords.
-你是一个资深的高能物理学家，你擅长阅读和理解学术论文。
-下面是论文的标题和摘要：
-标题：{title}
-摘要：{abstract}
+Given:
+The user's existing Zotero library, containing titles and abstracts of their collected papers. 
+\"\"\"
+ {keywords}
+\"\"\"
+These papers cover a cohesive research trajectory encompassing precision measurements in quantum chromodynamics (QCD), extraction and refinement of the strong coupling constant (αₛ), tau-lepton physics, nonperturbative effects in hadronic decays, particle form factors, searches for dark photons and other exotic particles, as well as detector technologies, specifically with a focus on timing resolution, calorimetry, and advanced machine learning reconstruction methods. 
+Recognize that the user's interests form a holistic and continuous research narrative rather than isolated fields.
 
-给定关键词："{keywords}"，请详细分析论文，根据结合你的背景知识，判断这篇文章是否与任意一个关键词相关。
+You will:
+1. Approach the comparison by understanding the user's thought process as macroscopic, continuous, and holistic, evaluating how the new arXiv submission integrates into or expands upon their overall research narrative,  explicitly grounded in conceptual alignment, methodological continuity, or thematic complementarity to the user's established research interests.
+2. Clearly justify each relevance rating by explicitly referencing how the new work relates to the user's broader academic journey—highlighting common themes, overlapping methodologies, or innovative approaches that resonate with or expand their current research interests.
 
 Your output should only in json format:
 {{
     "relevant": float [0-1], 1 for very relevant, 0 for not relevant
-    "reason": "your reason in Chinese"
+    "reason": "Concise and explicit justification tying the arXiv paper to the user's ongoing, integrated research interests, in Chinese."
 }}
-确保relevant的值与reason相对应。
     """
     # 获取 硅基流动 API 的端点和密钥
     endpoint = os.getenv("SILICONFLOW_API_ENDPOINT",
@@ -232,9 +224,10 @@ Your output should only in json format:
         "authorization": "Bearer sk-hdenevzwrgofdvhsxxofjjsnmkootiasenmkocsiojxdklvq"
     }
     data = {
+        # "model": "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B",  # 替换成你的模型
         # "model": "deepseek-ai/DeepSeek-R1-Distill-Llama-8B",  # 替换成你的模型
         # "model": "deepseek-ai/DeepSeek-R1-Distill-Llama-70B", # 替换成你的模型
-        "model": "Pro/deepseek-ai/DeepSeek-V3", # 替换成你的模型
+        "model": "Pro/deepseek-ai/DeepSeek-V3",  # 替换成你的模型
         "messages": [
             {
                 "role": "user",
@@ -373,21 +366,29 @@ def main():
 
     today = datetime.datetime.now()
     start_date = (today - datetime.timedelta(days=2)).strftime("%Y%m%d")
-    end_date = today.strftime("%Y%m%d")
+    end_date = (today - datetime.timedelta(days=0)).strftime("%Y%m%d")
 
     # Define the arXiv API query URL to fetch hep-ex and hep-ph papers.
     # 定义用于获取 hep-ex 和 hep-ph 论文的 arXiv API 查询 URL。
     arxiv_api_url = (
         "http://export.arxiv.org/api/query?search_query=(cat:hep-ex+OR+cat:hep-ph)+AND"
         f"+submittedDate:%5B{start_date}%20TO%20{end_date}%5D"
-        "&start=0&max_results=50&sortBy=submittedDate&sortOrder=descending"
+        "&start=0&max_results=100&sortBy=submittedDate&sortOrder=descending"
     )
     print("今天是 ", today, "论文起始日期")
 
     print("Fetching papers from arXiv...")
     print(f"正在从 arXiv 获取 {start_date} 到 {end_date} 的论文...")
     print("API url: ", arxiv_api_url)
-    papers = fetch_arxiv_papers(arxiv_api_url)
+
+    # 重复获取5次数据，直到成功获取文献为止。
+    for i in range(5):
+        papers = fetch_arxiv_papers(arxiv_api_url)
+        if len(papers) != 0:
+            break
+        else:
+            time.sleep(3)
+
     papers_info = []
 
     print(
@@ -432,7 +433,7 @@ def main():
     # Create a markdown file named with the current date.
     # 根据当前日期创建 markdown 文件。
     date_str = datetime.date.today().strftime("%Y-%m-%d")
-    report_filename = f"{MKD_OUTPUT}/dailyRepo_{date_str}.md"
+    report_filename = f"share/dailyRepo_{date_str}.md"
     generate_markdown_report(sorted_list, report_filename)
     print(f"Report generated: {report_filename}")
     print(f"报告已生成：{report_filename}")
