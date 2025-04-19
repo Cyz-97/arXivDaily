@@ -1,0 +1,15 @@
+I am a high-energy physicist working at the intersection of precision QCD, dark-sector phenomenology, and detector R&D. My research focuses on:
+
+Physics Goals
+Precision QCD: Extracting αₛ and heavy-quark masses at permil-level precision using hadronic τ decays and e⁺e⁻→hadrons (spectral moments, FOPT/CIPT, dispersive form factors).
+
+Dark-Sector Searches: Probing light vectors (e.g., dark photons) in π⁰/J/ψ decays and disentangling signals from QCD backgrounds.
+
+Fundamental Tests: Leveraging τ pairs at Belle II/FCC-ee for CP violation, quantum entanglement, and Bell inequality tests.
+
+Experimental Tools
+Detector Development: Optimizing ultra-fast timing (≲30 ps), granular calorimetry (HGCAL-style), and tracking for π⁰ ID, shower separation, and τ tagging.
+
+Software & Algorithms: Integrating particle-flow, ML-driven reconstruction (GNNs/BDTs), and simulation tools (Geant4, TAUOLA, unfolding methods) for next-generation e⁺e⁻ colliders.
+
+I bridge theory-driven targets (e.g., αₛ to 0.2%, dark-photon limits below ε²∼10⁻⁷) with detector and analysis pipelines. My work aims to advance both the physics reach and technical foundations of future high-energy experiments (Belle II, τ-charm factories, FCC-ee).
